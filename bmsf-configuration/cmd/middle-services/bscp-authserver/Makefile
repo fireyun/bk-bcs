@@ -14,8 +14,13 @@ LDVersionFLAG ?= "-X bk-bscp/pkg/version.VERSION=DEBUG \
 BINDIR = ${OUTPUT_DIR}/$(SERVER)
 BIN    = $(BINDIR)/$(SERVER)
 
-GOENVPATH = $(shell go env GOPATH)
-SCRIPTS   = $(GOENVPATH)/src/bk-bscp/scripts
+PRO_DIR = ${BSCP_DIR}
+# if BSCP_DIR doesn't exist, the PRO_DIR will be based on GOPATH
+ifeq ($(PRO_DIR),)
+	PRO_DIR = $(firstword $(subst :, ,${GOPATH}))/src/bk-bscp
+endif
+
+SCRIPTS = $(PRO_DIR)/scripts
 
 export GO111MODULE=on
 

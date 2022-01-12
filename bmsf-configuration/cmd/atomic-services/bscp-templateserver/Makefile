@@ -20,8 +20,13 @@ PLUGIN_DIR         = ${BINDIR}/plugin
 PLUGIN_GOTPL_BIN   = ${PLUGIN_DIR}/${PLUGIN_GOTPL}
 PLUGIN_MAKETPL_BIN = ${PLUGIN_DIR}/${PLUGIN_MAKO}
 
-GOENVPATH = $(shell go env GOPATH)
-SCRIPTS   = $(GOENVPATH)/src/bk-bscp/scripts
+PRO_DIR = ${BSCP_DIR}
+# if BSCP_DIR doesn't exist, the PRO_DIR will be based on GOPATH
+ifeq ($(PRO_DIR),)
+	PRO_DIR = $(firstword $(subst :, ,${GOPATH}))/src/bk-bscp
+endif
+
+SCRIPTS = $(PRO_DIR)/scripts
 
 export GO111MODULE=on
 
