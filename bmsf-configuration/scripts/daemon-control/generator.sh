@@ -11,15 +11,29 @@ APPBIN=$1
 APPARGS=$2
 BINPATH=$3
 
+# set the sed cmd according to OS
+SEDCMD=sed
+if [ `uname` == "Darwin" ]; then
+  SEDCMD=gsed
+fi
+echo $SEDCMD
+
+# set the readlink cmd according to OS
+READLINKCMD=readlink
+if [ `uname` == "Darwin" ]; then
+  READLINKCMD=greadlink
+fi
+echo ${READLINKCMD}
+
 # escape character ‘/’ in app args.
-APPARGS=$(echo "$APPARGS" | sed 's/\//\\\//g')
+APPARGS=$(echo "$APPARGS" | ${SEDCMD} 's/\//\\\//g')
 
 # tools.
-TOOLS=$(dirname $(readlink -f "$0"))
+TOOLS=$(dirname $(${READLINKCMD} -f "$0"))
 
 # generate app daemon-control tool.
 cp -rf ${TOOLS}/daemon-control.sh ${BINPATH}/$1.sh
 
-sed -i "s/.*APPBIN=.*/APPBIN=\"${APPBIN}\"/" ${BINPATH}/$1.sh
-sed -i "s/.*APPARGS=.*/APPARGS=\"${APPARGS}\"/" ${BINPATH}/$1.sh
-sed -i "s/.*BINPATH=.*/BINPATH=\".\"/" ${BINPATH}/$1.sh
+${SEDCMD} -i "s/.*APPBIN=.*/APPBIN=\"${APPBIN}\"/" ${BINPATH}/$1.sh
+${SEDCMD} -i "s/.*APPARGS=.*/APPARGS=\"${APPARGS}\"/" ${BINPATH}/$1.sh
+${SEDCMD} -i "s/.*BINPATH=.*/BINPATH=\".\"/" ${BINPATH}/$1.sh

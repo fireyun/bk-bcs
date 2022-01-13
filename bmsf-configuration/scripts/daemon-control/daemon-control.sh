@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# base functions.
-. /etc/rc.d/init.d/functions
-
 # app informations.
 APPBIN="python"
 APPARGS="-m SimpleHTTPServer 8001"
@@ -12,7 +9,7 @@ BINPATH="/usr/bin"
 start() {
     # start daemon.
     echo -n $"Starting ${APPBIN}: "
-    daemon "${BINPATH}/${APPBIN} ${APPARGS} &"
+    nohup ${BINPATH}/${APPBIN} ${APPARGS} &
     RET=$?
     echo
     return $RET
@@ -22,7 +19,7 @@ start() {
 stop() {
     # stop daemon.
     echo -n $"Stopping ${APPBIN}: "
-    killproc ${APPBIN}
+    ps aux | grep ${APPBIN} | grep -v grep | awk '{print $2}' | xargs kill
     RET=$?
     echo
     return $RET
@@ -40,7 +37,8 @@ restart() {
 # monitor app.
 monitor() {
     echo -n $"Monitor ${APPBIN}: "
-    if [ -n "`pidofproc ${APPBIN}`" ] ; then
+    num=`ps -efww | grep ${APPBIN} | grep -v grep | grep -v tail | wc -l`
+    if [ "$num" -gt 0 ];then
         success $"Monitor ${APPBIN}"
         echo
     else

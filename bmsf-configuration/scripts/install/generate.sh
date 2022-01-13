@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 set -eo pipefail
-PWD=$(dirname "$(readlink -f "$0")")
+
+# set the readlink cmd according to OS
+READLINKCMD=readlink
+if [ `uname` == "Darwin" ]; then
+  READLINKCMD=greadlink
+fi
+echo ${READLINKCMD}
+
+PWD=$(dirname "$($READLINKCMD -f "$0")")
 
 source ./bscp.env
 

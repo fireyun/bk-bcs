@@ -8,7 +8,10 @@ BK-BSCP 编译说明
 
 # 依赖命令
 
-## golint代码检查命令
+## 公共依赖
+- golint
+
+### golint代码检查命令
 
 安装:
 
@@ -18,12 +21,29 @@ REAL_GOLINT=$(go list -f {{.Target}} golang.org/x/lint/golint)
 cp -rf ${REAL_GOLINT} /usr/bin/
 ```
 
-## sed(gsed)命令
+## Darwin(macOS)依赖
+- sed(gsed)命令
+- readlink(greadlink)命令
+
+### sed(gsed)命令
 
 Linux平台默认附带了GNU的sed命令，Darwin(macOS)默认不带，需要自行安装gsed:
 
 ```shell
 brew install gnu-sed
+```
+
+### readlink(greadlink)命令
+
+Linux平台默认的readlink命令和Darwin(macOS)默认的使用不一样， Darwin平台的readlink -f使用会报错如下：
+```bash
+readlink: illegal option -- f
+usage: readlink [-n] [file ...]
+```
+需要自行安装coreutils，里面包含的命令greadlink，和Linux的readlink使用一致:
+
+```shell
+brew install coreutils
 ```
 
 # 编译
