@@ -1,5 +1,6 @@
 <template>
   <div class="bcs-footer">
+    <!--
     <div v-if="$INTERNAL">
       <div class="mb5 link">
         <a href="wxwork://message?uin=8444252571319680">{{ $t('blueking.onCall') }}</a> |
@@ -17,6 +18,7 @@
       </div>
       <p>Copyright © 2012 Tencent BlueKing. All Rights Reserved. {{ version }}</p>
     </div>
+    -->
   </div>
 </template>
 <script lang="ts">
