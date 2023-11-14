@@ -121,10 +121,10 @@ netpack:
 pre:
 	@echo "git tag: ${GITTAG}"
 	mkdir -p ${PACKAGEPATH}
-#	go mod tidy
-#	go fmt ./...
-#	cd ./scripts && chmod +x vet.sh && ./vet.sh
-#	cd ./scripts && chmod +x tongsuo.sh && ./tongsuo.sh
+	go mod tidy
+	go fmt ./...
+	cd ./scripts && chmod +x vet.sh && ./vet.sh
+	cd ./scripts && chmod +x tongsuo.sh && ./tongsuo.sh
 
 api:pre
 	mkdir -p ${PACKAGEPATH}/bcs-services
