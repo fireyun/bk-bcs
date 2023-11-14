@@ -11,12 +11,14 @@
       <div class="flex items-center h-10 shadow bg-white cursor-move px-2.5">
         <img src="@/images/terminal.svg">
         <span class="text-sm ml-2">WebConsole</span>
+        <!--
         <a
           href="https://bk.tencent.com/docs/document/7.0/173/14130"
           target="_blank"
           class="text-sm ml-2">
           <i class="bcs-icon bcs-icon-helper"></i>
         </a>
+        -->
       </div>
       <transition name="fade">
         <div

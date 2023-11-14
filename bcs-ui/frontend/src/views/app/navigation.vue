@@ -5,7 +5,7 @@
         <span class="title-icon"><img src="@/images/bcs.svg" class="all-icon"></span>
         <span
           class="title-desc bcs-title-desc"
-          @click="handleGoHome">{{ $INTERNAL ? $t('TKEx-IEG 容器平台') : $t('蓝鲸容器管理平台') }}</span>
+          @click="handleGoHome">{{ $INTERNAL ? $t('TKEx-IEG 容器平台') : $t('容器管理平台') }}</span>
       </template>
       <template #header>
         <div class="bcs-navigation-header">
@@ -74,6 +74,7 @@
             </bcs-popover>
           </div>
           <div class="nav-right">
+            <!--
             <bcs-popover theme="light navigation-message" class="mr5" offset="0, 20" placement="bottom" :arrow="false">
               <div class="flag-box">
                 <i id="siteHelp" class="bcs-icon bcs-icon-help-document-fill"></i>
@@ -86,6 +87,7 @@
                 </ul>
               </template>
             </bcs-popover>
+            -->
             <bcs-popover
               theme="light navigation-message"
               :arrow="false" offset="0, 20"

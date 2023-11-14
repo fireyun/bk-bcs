@@ -89,9 +89,11 @@
             <span v-else><!-- 空元素为了flex布局 --></span>
             <span class="tools">
               <span v-bk-tooltips.top="$t('复制代码')" @click="handleCopy"><i class="bcs-icon bcs-icon-copy"></i></span>
+              <!--
               <span
                 v-bk-tooltips.top="$t('帮助')"
                 @click="handleHelp"><i :class="['bcs-icon bcs-icon-help-2', { active: showHelp }]"></i></span>
+              -->
               <span
                 v-bk-tooltips.top="$t('关闭')"
                 @click="showExample = false"><i class="bcs-icon bcs-icon-close-5"></i></span>

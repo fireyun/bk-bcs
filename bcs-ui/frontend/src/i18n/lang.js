@@ -26,7 +26,6 @@
 
 export default {
   '容器服务': ['BCS'],
-  '蓝鲸容器管理平台': ["Container Service"],
   '项目信息': ['Project Info'],
   '英文缩写': ['English Name'],
   '编排类型': ['Orchestration Engine'],
@@ -1962,7 +1961,7 @@ export default {
   '产品文档': ['Documentation'],
   '版本日志': ['ChangeLogs'],
   '每页': ['Page'],
-  
+
   "的内容": [
       "Content"
   ],
@@ -2235,9 +2234,6 @@ export default {
   ],
   "系统": [
       "system"
-  ],
-  "容器管理平台": [
-      "Container Service"
   ],
   "需要申请的权限": [
       "Permission required to apply"
@@ -3140,8 +3136,8 @@ export default {
   "请输入3-32字符,以小写字母开头的项目英文名": [
       "Please enter 3-32 characters, the English name of the project starting with a lowercase letter"
   ],
-  "容器管理平台 | 腾讯蓝鲸智云": [
-      "Container management platform | Tencent Blue Whale Zhiyun"
+  "容器管理平台": [
+      "Container management platform"
   ],
   "技术支持": [
       "Technical Support"

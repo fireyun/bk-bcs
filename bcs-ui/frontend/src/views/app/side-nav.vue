@@ -38,8 +38,10 @@
       </span>
     </div>
     <!-- 菜单 -->
+
     <div class="side-nav">
       <SideMenu :list="menuList" :selected="selected" @change="handleMenuChange"></SideMenu>
+      <!--
       <div class="bcs-footer" v-if="$INTERNAL">
         <div class="mb5 link">
           <a href="wxwork://message?uin=8444252571319680">{{ $t('联系BK助手') }}</a> |
@@ -57,7 +59,9 @@
         </div>
         <p>Copyright © 2012-{{(new Date()).getFullYear()}} Tencent BlueKing. All Rights Reserved. V1.28.0</p>
       </div>
+      -->
     </div>
+
   </div>
 </template>
 
