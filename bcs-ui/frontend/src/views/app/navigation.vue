@@ -5,7 +5,7 @@
         <span class="title-icon"><img src="@/images/bcs.svg" class="all-icon"></span>
         <span
           class="title-desc bcs-title-desc"
-          @click="handleGoHome">{{ $INTERNAL ? $t('TKEx-IEG 容器平台') : $t('容器管理平台') }}</span>
+          @click="handleGoHome">{{ $INTERNAL ? $t('TKEx-IEG 容器平台') : $t('嘉为蓝鲸容器管理平台') }}</span>
       </template>
       <template #header>
         <div class="bcs-navigation-header">

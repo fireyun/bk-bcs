@@ -3136,7 +3136,7 @@ export default {
   "请输入3-32字符,以小写字母开头的项目英文名": [
       "Please enter 3-32 characters, the English name of the project starting with a lowercase letter"
   ],
-  "容器管理平台": [
+  "嘉为蓝鲸容器管理平台": [
       "Container management platform"
   ],
   "技术支持": [
