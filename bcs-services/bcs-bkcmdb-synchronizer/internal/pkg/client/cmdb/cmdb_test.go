@@ -16,6 +16,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 	"testing"
 
 	bkcmdbkube "configcenter/src/kube/types"
@@ -31,13 +32,14 @@ var (
 )
 
 func init() {
-	//jsonFile, err := os.Open("bcs-bkcmdb-synchronizer-decrypted.json")
-	//if err != nil {
+	// jsonFile, err := os.Open("bcs-bkcmdb-synchronizer-decrypted.json")
+	// if err != nil {
 	//	panic(err)
-	//}
-	//defer jsonFile.Close()
-	//byteValue, _ := io.ReadAll(jsonFile)
-	//json.Unmarshal(byteValue, BkcmdbSynchronizerOption)
+	// }
+	// defer jsonFile.Close()
+	// byteValue, _ := io.ReadAll(jsonFile)
+	// json.Unmarshal(byteValue, BkcmdbSynchronizerOption)
+	bkBizID, _ = strconv.ParseInt(os.Getenv("TEST_CMDB_BIZID"), 10, 64)
 }
 
 func getCli() *cmdbClient {
@@ -182,7 +184,7 @@ func Test_cmdbClient_CreateBcsCluster(t *testing.T) {
 // Test_cmdbClient_UpdateBcsCluster tests the UpdateBcsCluster method of the cmdbClient.
 func Test_cmdbClient_UpdateBcsCluster(t *testing.T) {
 	clusterID := []int64{3603}
-	//tmp := "123"
+	// tmp := "123"
 	environment := "debug"
 
 	type fields struct {
@@ -206,10 +208,10 @@ func Test_cmdbClient_UpdateBcsCluster(t *testing.T) {
 					BKBizID: &bkBizID,
 					IDs:     &clusterID,
 					Data: &client.UpdateBcsClusterRequestData{
-						//Version:     &tmp,
-						//NetworkType: &tmp,
-						//Region:      &tmp,
-						//Network:     &[]string{"111"},
+						// Version:     &tmp,
+						// NetworkType: &tmp,
+						// Region:      &tmp,
+						// Network:     &[]string{"111"},
 						Environment: &environment,
 					},
 				},
@@ -315,7 +317,7 @@ func Test_cmdbClient_GetBcsNamespace(t *testing.T) {
 				t.Errorf("GetBcsNamespace() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			//t.Logf("GetBcsNamespace() got = %v", got)
+			// t.Logf("GetBcsNamespace() got = %v", got)
 			nsids := make([]int64, 0)
 			for _, ns := range *got {
 				nsids = append(nsids, ns.ID)
@@ -550,10 +552,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "deployment",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -581,10 +583,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "daemonSet",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -612,10 +614,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "statefulSet",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -643,10 +645,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "gameDeployment",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -674,10 +676,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "gameStatefulSet",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -705,10 +707,10 @@ func Test_cmdbClient_GetBcsWorkload(t *testing.T) {
 							},
 						},
 					},
-					//ClusterUID: "cluster-bcs",
+					// ClusterUID: "cluster-bcs",
 					Kind: "daemonSet",
-					//BKClusterID: 449,
-					//Namespace:  "test",
+					// BKClusterID: 449,
+					// Namespace:  "test",
 				},
 			},
 			want:    nil,
@@ -971,7 +973,7 @@ func Test_cmdbClient_GetBcsNode(t *testing.T) {
 							},
 						},
 					},
-					//BKClusterID: 449,
+					// BKClusterID: 449,
 				},
 			},
 			want:    nil,
@@ -986,7 +988,7 @@ func Test_cmdbClient_GetBcsNode(t *testing.T) {
 				t.Errorf("GetBcsNode() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			//t.Logf("GetBcsNode() got = %v", got)
+			// t.Logf("GetBcsNode() got = %v", got)
 
 			nodeids := make([]int64, 0)
 			for _, node := range *got {
@@ -1361,7 +1363,7 @@ func Test_cmdbClient_DeleteBcsPod(t *testing.T) {
 
 // Test_deleteAllByBkBizID tests delete all bcs resources by bizid
 func Test_deleteAllByBkBizID(t *testing.T) {
-	bkBizID = int64(43)
+	bkBizID := bkBizID
 	c := getCli()
 	t.Logf("start delete all")
 	t.Logf("start delete all pod")
@@ -1624,7 +1626,7 @@ func Test_getAllByBkBizID(t *testing.T) {
 						},
 					},
 				},
-				//BKClusterID: clusterID,
+				// BKClusterID: clusterID,
 			})
 			if err != nil {
 				t.Errorf("GetBcsNode() error = %v", err)
@@ -1668,7 +1670,7 @@ func Test_getAllByBkBizID(t *testing.T) {
 						},
 					},
 				},
-				//ClusterUID: clusterUID,
+				// ClusterUID: clusterUID,
 			})
 			if err != nil {
 				t.Errorf("GetBcsNamespace() error = %v", err)
@@ -1720,8 +1722,8 @@ func Test_getAllByBkBizID(t *testing.T) {
 							},
 						},
 
-						//ClusterUID: clusterUID,
-						//Namespace:  namespaceName,
+						// ClusterUID: clusterUID,
+						// Namespace:  namespaceName,
 						Kind: workloadType,
 					})
 					if err != nil {
@@ -1777,8 +1779,8 @@ func Test_getAllByBkBizID(t *testing.T) {
 									},
 								},
 							},
-							//ClusterUID: clusterUID,
-							//Namespace:  namespaceName,
+							// ClusterUID: clusterUID,
+							// Namespace:  namespaceName,
 						})
 						if err != nil {
 							t.Errorf("GetBcsPod() error = %v", err)
