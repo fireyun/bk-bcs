@@ -43,8 +43,7 @@ func GetServerCert(domain, ip, port string) (time.Time, error) {
 	// 创建自定义的Transport，用于指定IP地址
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: true, // 跳过证书验证
-			ServerName:         domain,
+			ServerName: domain,
 		},
 		DialTLSContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
 			dialer := &net.Dialer{
@@ -56,8 +55,7 @@ func GetServerCert(domain, ip, port string) (time.Time, error) {
 				return nil, err
 			}
 			tlsConn := tls.Client(conn, &tls.Config{
-				InsecureSkipVerify: true,
-				ServerName:         domain,
+				ServerName: domain,
 			})
 			if err := tlsConn.Handshake(); err != nil {
 				return nil, err

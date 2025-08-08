@@ -46,7 +46,7 @@ func Request(url, method string, header http.Header, body io.Reader) (string, er
 		req.Header = header
 	}
 
-	client := &http.Client{}
+	client := &http.Client{Timeout: common.HTTPClientTimeout()}
 
 	rsp, err := client.Do(req)
 	if err != nil {
@@ -82,7 +82,7 @@ func RequestV2(url, method string, headSet []*HeaderSet, body io.Reader) (string
 
 	req.Close = true
 
-	client := &http.Client{}
+	client := &http.Client{Timeout: common.HTTPClientTimeout()}
 
 	rsp, err := client.Do(req)
 	if err != nil {
